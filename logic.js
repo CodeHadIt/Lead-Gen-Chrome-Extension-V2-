@@ -8,7 +8,7 @@ const deleteBtn = document.querySelector("#delete-btn");
 //The items we get from local storage is being stored here
 const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") );
 
-
+//the rendering function to display/update the leads
 function renderLeads(leads) {
     let listItems = "";
     for(let lead of leads) {
@@ -24,6 +24,7 @@ if (leadsFromLocalStorage) {
 }
 
 saveInputBtn.addEventListener("click", () => {
+    //get the value from the input field, push it into the array, store it in our local storage and then render it.
     let enteredValue = inputField.value;
     myLeads.push(enteredValue);
     enteredValue = "";
@@ -32,7 +33,7 @@ saveInputBtn.addEventListener("click", () => {
 });
 
 tabBtn.addEventListener("click", () =>{
-    //get current tab url from chrome API.
+    //get current tab url from chrome API, push to array, store in local storage and then render it.
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         myLeads.push(tabs[0].url);
         localStorage.setItem("myLeads", JSON.stringify(myLeads));
@@ -41,7 +42,7 @@ tabBtn.addEventListener("click", () =>{
     
 })
 
-// On double click, clears local storage, resets myLeads array back to empty, then renders nothing(by calling the render function with an empty array)
+// On double click, clear local storage, resets myLeads array back to empty, then renders nothing(by calling the render function with an empty array)
 deleteBtn.addEventListener("dblclick", () => { 
     localStorage.clear();
     myLeads = [];

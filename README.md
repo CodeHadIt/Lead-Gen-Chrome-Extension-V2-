@@ -10,4 +10,4 @@
 
 - Alternatively, you can go the Chad route and use the save Tab button to pluck the url from the address bar on any website you're on.
 
-- Happy scrapping!!!
+- Happy scrapping amigo!!!
